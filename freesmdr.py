@@ -22,7 +22,7 @@ Here is the SQL to create the table:
   `is_internal` tinyint(1) DEFAULT NULL COMMENT '**BOOL**',
   `call_id` int(10) unsigned DEFAULT NULL,
   `continuation` tinyint(1) DEFAULT NULL COMMENT '**BOOL**',
-  `paty1device` char(5) DEFAULT NULL,
+  `party1device` char(5) DEFAULT NULL,
   `party1name` varchar(255) DEFAULT NULL,
   `party2device` char(5) DEFAULT NULL,
   `party2name` varchar(255) DEFAULT NULL,
@@ -74,16 +74,17 @@ NAME = 'Free SMDR'
 VERSION = '0.9'
 
 # Settings
-HOST = ''                     #Listen on this IP
-PORT = 5514                   #Listen on this port
+HOST = '192.168.1.198'        # Listen on this IP
+PORT = 5514                   # Listen on this port
 LOGFILE = '/var/log/freesmdr/freesmdr.log' #Where to log the received data
 LOGINFO = '/var/log/freesmdr/freesmdr.info' #Debug output
 MYSQL_DB = {
-    'host': 'localhost',
-    'user': 'freesmdr',
-    'passwd': '',
-    'db': 'freesmdr',
+    'host': '192.168.1.210',
+    'user': 'root',
+    'passwd': 'MAst43Ef117',
+    'db': 'ordersys_main',
     'table': 'freesmdr',
+    'port': 50000
 }
 
 # Classes
@@ -147,6 +148,7 @@ class RecvHandler(BaseRequestHandler):
             user = MYSQL_DB['user'],
             passwd = MYSQL_DB['passwd'],
             db = MYSQL_DB['db'],
+            port = MYSQL_DB['port']
         )
         conn.autocommit(True)
 
@@ -227,7 +229,7 @@ class RecvHandler(BaseRequestHandler):
                             `is_internal` = %(is_internal)d,
                             `call_id` = %(call_id)d,
                             `continuation` = %(continuation)d,
-                            `paty1device` = '%(party1device)s',
+                            `party1device` = '%(party1device)s',
                             `party1name` = '%(party1name)s',
                             `party2device` = '%(party2device)s',
                             `party2name` = '%(party2name)s',
