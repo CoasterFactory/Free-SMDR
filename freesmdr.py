@@ -74,10 +74,10 @@ NAME = 'Free SMDR'
 VERSION = '0.9'
 
 # Settings
-HOST = '192.168.1.198'        # Listen on this IP
+HOST = '192.168.1.128'        # Listen on this IP
 PORT = 5514                   # Listen on this port
-LOGFILE = '/var/log/freesmdr/freesmdr.log' #Where to log the received data
-LOGINFO = '/var/log/freesmdr/freesmdr.info' #Debug output
+LOGFILE = '/home/sadmin/repos/Free-SMDR/logs/received.log' #Where to log the received data
+LOGINFO = '/home/sadmin/repos/Free-SMDR/logs/debug.log' #Debug output
 MYSQL_DB = {
     'host': '192.168.1.210',
     'user': 'root',
